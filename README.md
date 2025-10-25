@@ -1,69 +1,114 @@
-# Proyecto de Cuentos Educativos para Niños 🎨📚
+# Generador de Imágenes para Cuentos Educativos Infantiles 🎨📚
 
-Proyecto para crear cuentos ilustrados educativos usando Google Gemini API.
+Sistema para crear ilustraciones personalizadas para cuentos infantiles usando Google Gemini API.
+
+## 🎯 Características
+
+- **Generación flexible:** Crea cualquier personaje o escena que necesites
+- **Modo con referencia:** Mantiene consistencia visual usando una imagen de ejemplo
+- **Modo libre:** Genera escenas basándose solo en tu descripción
+- **Interactivo:** Simple interfaz de línea de comandos
 
 ## 📁 Estructura del Proyecto
 
-### Scripts Funcionales
+### Scripts Principales
 
 - **`generar_imagen_con_gemini.py`** ⭐ **RECOMENDADO**
-  - Usa el modelo `gemini-2.5-flash-image` (mismo que el chat de Gemini en el navegador)
-  - Genera imágenes basándose en una imagen de referencia
-  - **Ventajas:** Mejor calidad, mantiene estilo de referencia, más similar a Gemini web
-  - **Uso:** Para generar escenas manteniendo consistencia del personaje Mateo
+  - Generador interactivo y flexible
+  - Permite usar imagen de referencia opcional
+  - Personaliza completamente los personajes y escenas
+  - Usa `gemini-2.5-flash-image` (mismo que Gemini web)
 
 - **`generar_imagen_con_imagen4.py`**
-  - Usa el modelo oficial `imagen-4.0-generate-001` de Imagen 4
-  - Genera imágenes sin referencia
-  - **Ventajas:** API específica de Imagen, más parámetros de configuración
-  - **Uso:** Para generar imágenes simples sin necesidad de referencia
+  - Generador usando Imagen 4 API directa
+  - Solo descripción de texto (sin referencia)
+  - Más opciones de configuración técnica
 
-### Imágenes
+### Ejemplos Incluidos
 
-- **`mateo.png`** - Imagen de referencia del personaje Mateo (8 años)
-- **`mateo_gemini_dragon.png`** - Ejemplo generado con Gemini (Mateo vs dragón) ✅
-- **`imagen_generada_1.png`** - Ejemplo generado con Imagen 4
-
-## 🔑 API Key
-
-Actualmente configurada: `AIzaSyD6B6z-Q8En35eLWd401WDH6Rcvy5zkNZk`
+- **`mateo.png`** - Ejemplo de imagen de referencia
+- **`mateo_gemini_dragon.png`** - Ejemplo generado con referencia
+- **`mateo_cueva.png`** - Otro ejemplo
+- **`imagen_generada_1.png`** - Ejemplo con Imagen 4
 
 ## 🚀 Cómo Usar
 
-### Opción 1: Con Gemini (Recomendado)
+### Ejecución Simple
 
 ```bash
-python generar_imagen_con_gemini.py
+.venv/bin/python generar_imagen_con_gemini.py
 ```
 
-Este script:
-1. Analiza la imagen de referencia `mateo.png`
-2. Genera una nueva escena manteniendo el estilo y características
-3. Guarda el resultado como `mateo_gemini_dragon.png`
+### Flujo de Uso
 
-### Opción 2: Con Imagen 4
+1. **Seleccionar modo:**
+   - Opción 1: Con imagen de referencia (para mantener estilo/personaje consistente)
+   - Opción 2: Sin referencia (descripción libre)
 
-```bash
-python generar_imagen_con_imagen4.py
+2. **Si elegiste opción 1:**
+   - Proporciona la ruta a tu imagen de referencia
+   - Ejemplo: `/home/usuario/mi_personaje.png`
+
+3. **Describir la escena:**
+   - Sé específico con personajes, colores, acciones, escenario
+   - Ejemplo: "Una niña valiente de 7 años con trenzas rojas explorando un bosque mágico lleno de hongos luminosos, llevando una mochila amarilla"
+
+4. **Nombre del archivo:**
+   - Ejemplo: `nina_bosque.png`
+
+5. **¡Listo!** La imagen se guarda en la carpeta del proyecto
+
+## 💡 Ejemplos de Uso
+
+### Ejemplo 1: Crear personaje nuevo sin referencia
+
+```
+Opción: 2
+Descripción: Un niño de 6 años llamado Lucas con pelo rubio rizado, 
+             pecas, usando overol azul y botas rojas, jugando con 
+             un perro golden retriever en un parque al atardecer
+Archivo: lucas_parque.png
 ```
 
-Este script genera imágenes directamente con Imagen 4.
+### Ejemplo 2: Mantener consistencia con referencia
+
+```
+Opción: 1
+Imagen de referencia: ./sofia.png
+Descripción: La misma niña nadando en el océano con tortugas marinas, 
+             burbujas de colores, corales al fondo
+Archivo: sofia_oceano.png
+```
+
+### Ejemplo 3: Escena educativa
+
+```
+Descripción: Un grupo de niños diversos (asiático, africano, latino) 
+             lavándose las manos correctamente con jabón, gotas de agua 
+             brillantes, ambiente de baño colorido y limpio
+Archivo: cuento_higiene.png
+```
+
+## 🔑 API Key
+
+Actualmente configurada en el código. Para cambiarla, edita la variable `API_KEY` en los scripts.
 
 ## 📝 Próximos Pasos
 
-1. ✅ Generar imágenes con referencia de personaje
-2. ✅ Mantener consistencia visual del personaje
-3. ⏳ Crear sistema completo de generación de cuentos
-4. ⏳ Integrar generación de audio/voz
-5. ⏳ Crear videos a partir de las imágenes
+- ✅ Generador flexible de imágenes con/sin referencia
+- ✅ Personalización completa de personajes
+- ⏳ Sistema de generación de cuentos completos (texto + imágenes)
+- ⏳ Integración de audio/voz narrativa
+- ⏳ Exportación a video o PDF
 
-## 🎯 Objetivo del Proyecto
+## 🎯 Casos de Uso
 
-Crear cuentos educativos ilustrados para enseñar a los niños sobre seguridad y buenos hábitos, con:
-- Texto narrativo generado por Gemini
-- Ilustraciones consistentes del personaje
-- Voces/audio generado
-- Video final del cuento
+Este generador es ideal para:
+
+1. **Cuentos Educativos:** Enseñar hábitos, seguridad, valores
+2. **Historias Personalizadas:** Crear cuentos con el nombre y características del niño
+3. **Material Didáctico:** Ilustraciones para explicar conceptos
+4. **Series de Personajes:** Mantener consistencia visual en múltiples escenas
 
 ## 📦 Dependencias
 
@@ -73,7 +118,36 @@ pip install google-generativeai google-genai Pillow
 
 ## 🌟 Mejores Prácticas
 
-- Usa `generar_imagen_con_gemini.py` para mantener consistencia del personaje
-- Los prompts deben estar en **inglés** para mejores resultados
-- La imagen de referencia ayuda a mantener el estilo visual
-- Gemini 2.5 Flash Image produce resultados más similares al chat web
+### Para Mejores Resultados:
+
+1. **Sé específico en las descripciones:**
+   - ✅ "Niña de 5 años con coletas negras, vestido amarillo con flores, zapatos rojos"
+   - ❌ "Una niña bonita"
+
+2. **Incluye detalles del escenario:**
+   - ✅ "En un jardín soleado con mariposas azules y flores de colores"
+   - ❌ "Afuera"
+
+3. **Especifica el mood/tono:**
+   - ✅ "Ambiente alegre y acogedor, colores cálidos"
+   - ❌ Solo describir objetos
+
+4. **Para consistencia de personajes:**
+   - Usa modo con referencia (opción 1)
+   - Guarda la primera imagen generada como referencia
+   - Úsala para todas las escenas del mismo cuento
+
+### Tips Técnicos:
+
+- Los prompts pueden estar en español o inglés
+- Imagen de referencia ayuda enormemente con la consistencia
+- Gemini 2.5 Flash Image da mejores resultados que Imagen 4 para este uso
+- Las imágenes generadas incluyen marca de agua SynthID de Google
+
+## 🤝 Contribuciones
+
+Este es un proyecto abierto. Siéntete libre de:
+- Reportar bugs
+- Sugerir mejoras
+- Agregar nuevas funcionalidades
+- Compartir ejemplos de cuentos creados
