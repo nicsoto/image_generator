@@ -73,12 +73,34 @@ try:
     else:
         response = model.generate_content(PROMPT)
     
+    print("Procesando respuesta...")
+    
+    imagen_guardada = False
     for part in response.parts:
         if hasattr(part, "inline_data") and part.inline_data and part.inline_data.mime_type == "image/png":
             with open(nombre, "wb") as f:
                 f.write(part.inline_data.data)
+            print()
+            print("=" * 60)
             print(f"LISTO: {nombre}")
+            print(f"Ubicacion: /home/nico/Escritorio/hackaton/{nombre}")
+            print("=" * 60)
+            print()
+            imagen_guardada = True
             break
+    
+    if not imagen_guardada:
+        print()
+        print("ADVERTENCIA: No se pudo generar la imagen.")
+        print("La respuesta no contenia una imagen valida.")
+        print()
+        
 except Exception as e:
+    print()
+    print("=" * 60)
     print(f"ERROR: {e}")
+    print("=" * 60)
+    import traceback
+    traceback.print_exc()
+    print()
 
