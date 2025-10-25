@@ -1,97 +1,126 @@
 # Generador de Imágenes para Cuentos Educativos Infantiles 🎨📚
 
-Sistema para crear ilustraciones personalizadas para cuentos infantiles usando Google Gemini API.
+Sistema para crear ilustraciones personalizadas y consistentes para cuentos infantiles usando Google Gemini API.
 
-## 🎯 Características
+## 🎯 Objetivo
 
-- **Generación flexible:** Crea cualquier personaje o escena que necesites
-- **Modo con referencia:** Mantiene consistencia visual usando una imagen de ejemplo
-- **Modo libre:** Genera escenas basándose solo en tu descripción
-- **Interactivo:** Simple interfaz de línea de comandos
+Generar imágenes para cuentos educativos infantiles manteniendo **consistencia visual** de los personajes a lo largo de toda la historia.
 
-## 📁 Estructura del Proyecto
+## 📁 Archivos del Proyecto
 
-### Scripts Principales
-
-- **`generar_imagen_con_gemini.py`** ⭐ **RECOMENDADO**
-  - Generador interactivo y flexible
-  - Permite usar imagen de referencia opcional
-  - Personaliza completamente los personajes y escenas
-  - Usa `gemini-2.5-flash-image` (mismo que Gemini web)
-
-- **`generar_imagen_con_imagen4.py`**
-  - Generador usando Imagen 4 API directa
-  - Solo descripción de texto (sin referencia)
-  - Más opciones de configuración técnica
-
-### Ejemplos Incluidos
-
-- **`mateo.png`** - Ejemplo de imagen de referencia
-- **`mateo_gemini_dragon.png`** - Ejemplo generado con referencia
-- **`mateo_cueva.png`** - Otro ejemplo
-- **`imagen_generada_1.png`** - Ejemplo con Imagen 4
+- **`generar_imagen_con_gemini.py`** - Generador principal (único archivo necesario)
+- **`README.md`** - Esta documentación
+- **`.gitignore`** - Configuración de Git
 
 ## 🚀 Cómo Usar
 
-### Ejecución Simple
+### Instalación
+
+```bash
+# Crear entorno virtual
+python -m venv .venv
+
+# Activar entorno virtual
+source .venv/bin/activate  # Linux/Mac
+# o
+.venv\Scripts\activate  # Windows
+
+# Instalar dependencias
+pip install google-generativeai google-genai Pillow
+```
+
+### Ejecución
 
 ```bash
 .venv/bin/python generar_imagen_con_gemini.py
 ```
 
-### Flujo de Uso
+## 💡 Flujo de Trabajo Recomendado
 
-1. **Seleccionar modo:**
-   - Opción 1: Con imagen de referencia (para mantener estilo/personaje consistente)
-   - Opción 2: Sin referencia (descripción libre)
+### Para un CUENTO NUEVO:
 
-2. **Si elegiste opción 1:**
-   - Proporciona la ruta a tu imagen de referencia
-   - Ejemplo: `/home/usuario/mi_personaje.png`
+1. **Primera escena (crear personaje nuevo):**
+   - Selecciona opción `2` (sin referencia)
+   - Describe detalladamente tu personaje y escena
+   - Ejemplo: "Una niña de 7 años llamada Ana con trenzas rojas, vestido amarillo con flores, explorando un bosque mágico"
+   - Guarda esta imagen (será tu referencia)
 
-3. **Describir la escena:**
-   - Sé específico con personajes, colores, acciones, escenario
-   - Ejemplo: "Una niña valiente de 7 años con trenzas rojas explorando un bosque mágico lleno de hongos luminosos, llevando una mochila amarilla"
+2. **Resto de escenas del MISMO cuento:**
+   - Selecciona opción `1` (con referencia)
+   - Usa la primera imagen como referencia
+   - Describe solo las nuevas escenas
+   - El personaje se mantendrá consistente
 
-4. **Nombre del archivo:**
-   - Ejemplo: `nina_bosque.png`
+3. **NUEVO cuento:**
+   - Vuelve al paso 1
+   - Crea nuevos personajes desde cero
 
-5. **¡Listo!** La imagen se guarda en la carpeta del proyecto
+## � Ejemplos Prácticos
 
-## 💡 Ejemplos de Uso
+### Ejemplo 1: Cuento sobre lavarse las manos
 
-### Ejemplo 1: Crear personaje nuevo sin referencia
-
+**Escena 1 (sin referencia):**
 ```
 Opción: 2
-Descripción: Un niño de 6 años llamado Lucas con pelo rubio rizado, 
-             pecas, usando overol azul y botas rojas, jugando con 
-             un perro golden retriever en un parque al atardecer
-Archivo: lucas_parque.png
+Descripción: Un niño de 6 años llamado Pedro con pelo negro corto, 
+camiseta azul y pantalón verde, con las manos sucias de tierra, 
+en un baño colorido y limpio
+Archivo: pedro_manos_sucias.png
 ```
 
-### Ejemplo 2: Mantener consistencia con referencia
-
+**Escena 2 (con referencia de pedro_manos_sucias.png):**
 ```
 Opción: 1
-Imagen de referencia: ./sofia.png
-Descripción: La misma niña nadando en el océano con tortugas marinas, 
-             burbujas de colores, corales al fondo
-Archivo: sofia_oceano.png
+Referencia: pedro_manos_sucias.png
+Descripción: El mismo niño lavándose las manos con jabón, 
+burbujas de colores, sonriendo
+Archivo: pedro_lavando_manos.png
 ```
 
-### Ejemplo 3: Escena educativa
-
+**Escena 3 (con referencia):**
 ```
-Descripción: Un grupo de niños diversos (asiático, africano, latino) 
-             lavándose las manos correctamente con jabón, gotas de agua 
-             brillantes, ambiente de baño colorido y limpio
-Archivo: cuento_higiene.png
+Opción: 1
+Referencia: pedro_manos_sucias.png
+Descripción: El mismo niño mostrando sus manos limpias, 
+muy feliz, con brillos alrededor
+Archivo: pedro_manos_limpias.png
 ```
 
-## 🔑 API Key
+### Ejemplo 2: Cuento sobre no tocar enchufes
 
-Actualmente configurada en el código. Para cambiarla, edita la variable `API_KEY` en los scripts.
+**Primera escena:**
+```
+Opción: 2
+Descripción: Una niña curiosa de 5 años llamada Sofía con pelo rizado 
+castaño, vestido rosa, acercándose a un enchufe en la pared
+Archivo: sofia_enchufe_peligro.png
+```
+
+**Segunda escena:**
+```
+Opción: 1
+Referencia: sofia_enchufe_peligro.png
+Descripción: La misma niña alejándose del enchufe, su mamá 
+explicándole con cariño el peligro
+Archivo: sofia_aprende.png
+```
+
+## 🔑 Configuración API
+
+La API Key está incluida en el código. Para cambiarla, edita la variable `API_KEY` en `generar_imagen_con_gemini.py`.
+
+## 🌟 Tips para Mejores Resultados
+
+1. **Sé específico:** Describe edad, colores de ropa, peinado, accesorios
+2. **Mantén coherencia:** Usa la misma imagen de referencia para todo un cuento
+3. **Detalles del escenario:** Describe el ambiente, colores, iluminación
+4. **Emociones:** Menciona la expresión del personaje (feliz, triste, curioso)
+
+## 📦 Dependencias
+
+- `google-generativeai` - Cliente de Gemini
+- `google-genai` - API adicional de Google
+- `Pillow` - Procesamiento de imágenes
 
 ## 📝 Próximos Pasos
 
