@@ -18,10 +18,11 @@ env/
 *.swo
 *~
 
-# Imágenes temporales/prueba (mantener solo las importantes)
-mateo_gemini_image*.png
-imagen_temp*.png
+# Imágenes generadas (las de cuentos)
+escena_*.png
 test_*.png
+imagenes_cuento/
+cuentos_generados/
 
 # Sistema
 .DS_Store
