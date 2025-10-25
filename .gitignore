@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Imágenes temporales/prueba (mantener solo las importantes)
+mateo_gemini_image*.png
+imagen_temp*.png
+test_*.png
+
+# Sistema
+.DS_Store
+Thumbs.db
